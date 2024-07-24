@@ -1,6 +1,7 @@
 import express from "express";
 import cors from "cors";
 import getEnvVar from "./utils/envVars.js";
+import devDebug from "./utils/devDebug.js";
 
 export default function expressApp() {
   const app = express();
@@ -29,6 +30,24 @@ export default function expressApp() {
       message: "Not found!",
     });
   });
+
+  app.use(
+    // eslint-disable-next-line no-unused-vars
+    (err, _req, res, _next) => {
+      const errData = {
+        status: err.status || err.statusCode || 500,
+        name: err.name,
+        message: err.message || "server error",
+      };
+
+      devDebug(errData.message);
+
+      res.status(errData.status).json({
+        success: false,
+        message: errData.name,
+      });
+    }
+  );
 
   return app;
 }
