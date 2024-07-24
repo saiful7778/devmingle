@@ -1,7 +1,10 @@
 import express from "express";
 import cors from "cors";
+// utils
 import getEnvVar from "./utils/envVars.js";
 import devDebug from "./utils/devDebug.js";
+// routes
+import userRoute from "./apis/user/userRoute.js";
 
 export default function expressApp() {
   const app = express();
@@ -23,6 +26,8 @@ export default function expressApp() {
       message: "Server is running",
     });
   });
+
+  app.use("/api/users", userRoute);
 
   app.get("*", (_req, res) => {
     res.status(404).json({
