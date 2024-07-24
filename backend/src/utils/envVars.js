@@ -8,6 +8,7 @@ const envVars = {
   STRIPE_SECRET_KEY: process.env.STRIPE_SECRET_KEY,
   DB_CONNECT: process.env.DB_CONNECT,
   FORNTEND_URL: process.env.FORNTEND_URL,
+  NODE_ENV: process.env.NODE_ENV,
 };
 
 export default function getEnvVar(varName) {
