@@ -8,6 +8,7 @@ import getEnvVar from "./utils/envVars.js";
 import devDebug from "./utils/devDebug.js";
 // routes
 import userRoute from "./apis/user/userRoute.js";
+import authRoute from "./apis/auth/authRoute.js";
 
 export default function expressApp() {
   const app = express();
@@ -43,6 +44,7 @@ export default function expressApp() {
   });
 
   app.use("/api/users", userRoute);
+  app.use("/api/auth", authRoute);
 
   app.get("*", (_req, res) => {
     res.status(404).json({
