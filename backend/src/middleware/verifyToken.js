@@ -4,7 +4,7 @@ import getEnvVar from "../utils/envVars.js";
 
 export default function verifyToken(req, res, next) {
   const { authorization } = req.headers;
-  const { email } = req.query;
+  const { userEmail } = req.query;
 
   if (!authorization) {
     return next(createHttpError(401, "authorization headers is unavailable"));
@@ -15,7 +15,7 @@ export default function verifyToken(req, res, next) {
     return next(createHttpError(401, "authorization token is unavailable"));
   }
 
-  if (!email) {
+  if (!userEmail) {
     return next(createHttpError(401, "query email is unavailable"));
   }
 
@@ -24,7 +24,7 @@ export default function verifyToken(req, res, next) {
       return next(createHttpError(401, "token is not valid"));
     }
 
-    if (decode?.email !== email) {
+    if (decode?.userEmail !== userEmail) {
       return next(
         createHttpError(401, "token user email and query email is not match")
       );

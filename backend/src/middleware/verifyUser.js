@@ -11,18 +11,14 @@ export default function verifyUser(userRole) {
     try {
       const existUser = await userModel.findOne(
         { _id: userId },
-        { _id: 1, role: 1, access: 1 }
+        { _id: 1, userRole: 1 }
       );
 
       if (!existUser) {
         return next(createHttpError(401, "user doesn't exist"));
       }
 
-      if (!existUser.access) {
-        return next(createHttpError(403, "user haven't access"));
-      }
-
-      if (!userRole.includes(existUser.role)) {
+      if (!userRole.includes(existUser.userRole)) {
         return next(createHttpError(403, "user haven't access role"));
       }
 
