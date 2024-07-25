@@ -1,7 +1,7 @@
 import { commentModel } from "../../../models/postModel.js";
 import serverHelper from "../../../utils/serverHelper.js";
 
-export default function getCommentController(req, res, next) {
+export default function getAllCommentController(req, res, next) {
   const postId = req.params.postId;
 
   serverHelper(async () => {

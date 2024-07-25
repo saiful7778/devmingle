@@ -11,6 +11,7 @@ import userRoute from "./apis/user/userRoute.js";
 import authRoute from "./apis/auth/authRoute.js";
 import postRoute from "./apis/post/postRoute.js";
 import commentRoute from "./apis/comment/commentRoute.js";
+import reportRoute from "./apis/report/reportRoute.js";
 
 export default function expressApp() {
   const app = express();
@@ -49,6 +50,7 @@ export default function expressApp() {
   app.use("/api/users", userRoute);
   app.use("/api/posts", postRoute);
   app.use("/api/posts/comments", commentRoute);
+  app.use("/api/posts/reports", reportRoute);
 
   app.get("*", (_req, res) => {
     res.status(404).json({
