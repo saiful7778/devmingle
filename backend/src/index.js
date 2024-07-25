@@ -16,7 +16,7 @@ import getEnvVar from "./utils/envVars.js";
   }
 })();
 
-const port = process.env.PORT ?? 5001;
+const port = process.env.PORT ?? 5000;
 const app = expressApp();
 
 app.listen(port, () => {

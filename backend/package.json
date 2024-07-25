@@ -2,10 +2,10 @@
   "name": "devmingle-backend",
   "version": "1.0.0",
   "description": "DevMingle is a online forum based on MERN stack technologies.",
-  "main": "src/index.js",
+  "main": "./src/index.js",
   "type": "module",
   "scripts": {
-    "start": "node src/index.js",
+    "start": "node ./src/index.js",
     "dev": "nodemon"
   },
   "keywords": [],
