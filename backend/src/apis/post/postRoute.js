@@ -8,6 +8,7 @@ import getPostController from "./controllers/getPostController.js";
 import getAllPostController from "./controllers/getAllPostController.js";
 import updatePostController from "./controllers/updatePostController.js";
 import deletePostController from "./controllers/deletePostController.js";
+import searchPostController from "./controllers/searchPostController.js";
 
 const postRoute = Router();
 
@@ -16,6 +17,8 @@ postRoute
   .all(verifyToken)
   .post(verifyUser(["user", "admin"]), createPostController)
   .get(getAllPostController);
+
+postRoute.get("/search", searchPostController);
 
 postRoute
   .route("/:postId")
