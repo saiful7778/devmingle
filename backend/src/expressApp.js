@@ -9,6 +9,7 @@ import devDebug from "./utils/devDebug.js";
 // routes
 import userRoute from "./apis/user/userRoute.js";
 import authRoute from "./apis/auth/authRoute.js";
+import postRoute from "./apis/post/postRoute.js";
 
 export default function expressApp() {
   const app = express();
@@ -43,8 +44,9 @@ export default function expressApp() {
     });
   });
 
-  app.use("/api/users", userRoute);
   app.use("/api/auth", authRoute);
+  app.use("/api/users", userRoute);
+  app.use("/api/posts", postRoute);
 
   app.get("*", (_req, res) => {
     res.status(404).json({
