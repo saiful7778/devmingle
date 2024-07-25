@@ -15,6 +15,7 @@ export default function getPostController(req, res, next) {
         success: false,
         message: "Post not found",
       });
+      return;
     }
 
     const comments = await commentModel

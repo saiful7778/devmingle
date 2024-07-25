@@ -7,6 +7,7 @@ import createPostController from "./controllers/createPostController.js";
 import getPostController from "./controllers/getPostController.js";
 import getAllPostController from "./controllers/getAllPostController.js";
 import updatePostController from "./controllers/updatePostController.js";
+import deletePostController from "./controllers/deletePostController.js";
 
 const postRoute = Router();
 
@@ -20,6 +21,7 @@ postRoute
   .route("/:postId")
   .all(verifyToken)
   .get(getPostController)
-  .patch(updatePostController);
+  .patch(updatePostController)
+  .delete(verifyUser(["user", "admin"]), deletePostController);
 
 export default postRoute;
