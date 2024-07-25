@@ -6,8 +6,14 @@ import verifyUser from "../../middleware/verifyUser.js";
 import createCommentController from "./controllers/createCommentController.js";
 import createReportController from "./controllers/createReportController.js";
 import getCommentController from "./controllers/getCommentController.js";
+import getAllReportsController from "./controllers/getAllReportsController.js";
 
 const commentRoute = Router();
+
+commentRoute
+  .route("/reports")
+  .all(verifyToken, verifyUser(["admin"]))
+  .get(getAllReportsController);
 
 commentRoute
   .route("/:postId")
