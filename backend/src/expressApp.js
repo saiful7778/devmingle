@@ -14,6 +14,7 @@ import commentRoute from "./apis/comment/commentRoute.js";
 import reportRoute from "./apis/report/reportRoute.js";
 import paymentRoute from "./apis/payment/paymentRoute.js";
 import announcementRoute from "./apis/announcement/announcementRoute.js";
+import reCaptchaRoute from "./apis/reCaptcha/reCaptchaRoute.js";
 
 export default function expressApp() {
   const app = express();
@@ -55,6 +56,7 @@ export default function expressApp() {
   app.use("/api/posts", postRoute);
   app.use("/api/payment", paymentRoute);
   app.use("/api/announcements", announcementRoute);
+  app.use("/api/reCaptcha", reCaptchaRoute);
 
   app.get("*", (_req, res) => {
     res.status(404).json({
