@@ -2,6 +2,7 @@ import express from "express";
 import cors from "cors";
 import { rateLimit } from "express-rate-limit";
 import helmet from "helmet";
+import morgan from "morgan";
 // utils
 import getEnvVar from "./utils/envVars.js";
 import devDebug from "./utils/devDebug.js";
@@ -21,6 +22,9 @@ export default function expressApp() {
     })
   );
   app.use(express.json());
+  if (getEnvVar("NODE_ENV") === "development") {
+    app.use(morgan("dev"));
+  }
   app.use(helmet());
   const limiter = rateLimit({
     windowMs: 15 * 60 * 1000, // 15 minutes
