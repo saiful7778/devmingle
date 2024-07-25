@@ -6,6 +6,7 @@ import verifyUser from "../../middleware/verifyUser.js";
 import createAnnouncementController from "./controllers/createAnnouncementController.js";
 import getAllAnnouncementController from "./controllers/getAllAnnouncementController.js";
 import countAnnouncementController from "./controllers/countAnnouncementController.js";
+import deleteAnnouncementController from "./controllers/deleteAnnouncementController.js";
 
 const announcementRoute = Router();
 
@@ -16,5 +17,10 @@ announcementRoute
   .get(getAllAnnouncementController);
 
 announcementRoute.get("/count", countAnnouncementController);
+
+announcementRoute
+  .route("/:announcementId")
+  .all(verifyToken)
+  .delete(verifyUser(["admin"]), deleteAnnouncementController);
 
 export default announcementRoute;
