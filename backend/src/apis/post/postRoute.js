@@ -9,6 +9,7 @@ import getAllPostController from "./controllers/getAllPostController.js";
 import updatePostController from "./controllers/updatePostController.js";
 import deletePostController from "./controllers/deletePostController.js";
 import searchPostController from "./controllers/searchPostController.js";
+import userPostGetController from "./controllers/userPostGetController.js";
 
 const postRoute = Router();
 
@@ -19,6 +20,8 @@ postRoute
   .get(getAllPostController);
 
 postRoute.get("/search", searchPostController);
+
+postRoute.get("/user_posts/:userId", userPostGetController);
 
 postRoute
   .route("/:postId")
