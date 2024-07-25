@@ -6,6 +6,7 @@ import verifyUser from "../../middleware/verifyUser.js";
 import createPostController from "./controllers/createPostController.js";
 import getPostController from "./controllers/getPostController.js";
 import getAllPostController from "./controllers/getAllPostController.js";
+import updatePostController from "./controllers/updatePostController.js";
 
 const postRoute = Router();
 
@@ -15,6 +16,10 @@ postRoute
   .post(verifyUser(["user", "admin"]), createPostController)
   .get(getAllPostController);
 
-postRoute.route("/:postId").all(verifyToken).get(getPostController);
+postRoute
+  .route("/:postId")
+  .all(verifyToken)
+  .get(getPostController)
+  .patch(updatePostController);
 
 export default postRoute;
