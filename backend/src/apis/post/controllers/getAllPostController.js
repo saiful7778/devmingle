@@ -19,9 +19,6 @@ export default function getAllPostController(req, res, next) {
           voteDifference: {
             $subtract: ["$voteCount.upVote", "$voteCount.downVote"],
           },
-          id: {
-            $toString: "$_id",
-          },
         },
       },
       {
@@ -29,7 +26,6 @@ export default function getAllPostController(req, res, next) {
       },
       {
         $project: {
-          _id: 0,
           __v: 0,
           des: 0,
         },
@@ -43,7 +39,6 @@ export default function getAllPostController(req, res, next) {
           pipeline: [
             {
               $project: {
-                _id: 0,
                 userName: 1,
                 userEmail: 1,
                 userPhoto: 1,
