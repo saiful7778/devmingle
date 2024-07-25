@@ -17,8 +17,7 @@ userRoute
 
 userRoute
   .route("/:userId")
-  .all(verifyToken)
   .get(getUserController)
-  .patch(verifyUser(["admin"]), updateUserController);
+  .patch(verifyToken, verifyUser(["admin"]), updateUserController);
 
 export default userRoute;
