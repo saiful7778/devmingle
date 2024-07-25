@@ -15,8 +15,7 @@ const postRoute = Router();
 
 postRoute
   .route("/")
-  .all(verifyToken)
-  .post(verifyUser(["user", "admin"]), createPostController)
+  .post(verifyToken, verifyUser(["user", "admin"]), createPostController)
   .get(getAllPostController);
 
 postRoute.get("/search", searchPostController);
