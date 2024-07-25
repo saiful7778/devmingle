@@ -11,7 +11,7 @@ export default function getAllPostController(req, res, next) {
   const tag = queryTag;
 
   serverHelper(async () => {
-    const totalCount = await postModel.estimatedDocumentCount();
+    const totalCount = await postModel.countDocuments();
 
     let pipeline = [
       {
@@ -64,17 +64,13 @@ export default function getAllPostController(req, res, next) {
       });
     }
 
-    const posts = await postModel
-      .aggregate(pipeline)
-      .skip(skip)
-      .limit(size)
-      .exec();
+    const posts = await postModel.aggregate(pipeline).skip(skip).limit(size);
 
-    res.status(200).send({
+    res.status(200).json({
       success: true,
       totalCount,
       count: posts.length,
-      posts,
+      data: posts,
     });
   }, next);
 }
