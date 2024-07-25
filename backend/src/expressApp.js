@@ -1,5 +1,6 @@
 import express from "express";
 import cors from "cors";
+import { rateLimit } from "express-rate-limit";
 // utils
 import getEnvVar from "./utils/envVars.js";
 import devDebug from "./utils/devDebug.js";
@@ -19,6 +20,14 @@ export default function expressApp() {
     })
   );
   app.use(express.json());
+  const limiter = rateLimit({
+    windowMs: 15 * 60 * 1000, // 15 minutes
+    max: 100, // limit each IP to 100 requests per windowMs
+    message:
+      "Too many requests from this IP, please try again after 15 minutes",
+    headers: true,
+  });
+  app.use(limiter);
 
   app.get("/", (_req, res) => {
     res.status(200).json({
