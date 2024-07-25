@@ -48,9 +48,9 @@ export default function expressApp() {
 
   app.use("/api/auth", authRoute);
   app.use("/api/users", userRoute);
-  app.use("/api/posts", postRoute);
   app.use("/api/posts/comments", commentRoute);
   app.use("/api/posts/reports", reportRoute);
+  app.use("/api/posts", postRoute);
 
   app.get("*", (_req, res) => {
     res.status(404).json({
