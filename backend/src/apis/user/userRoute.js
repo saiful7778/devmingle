@@ -6,6 +6,7 @@ import verifyUser from "../../middleware/verifyUser.js";
 import createUserController from "./controllers/createUserController.js";
 import getUserController from "./controllers/getUserController.js";
 import getAllUserController from "./controllers/getAllUserController.js";
+import updateUserController from "./controllers/updateUserController.js";
 
 const userRoute = Router();
 
@@ -14,6 +15,10 @@ userRoute
   .post(createUserController)
   .get(verifyToken, verifyUser(["admin"]), getAllUserController);
 
-userRoute.get("/:userId", verifyToken, getUserController);
+userRoute
+  .route("/:userId")
+  .all(verifyToken)
+  .get(getUserController)
+  .patch(verifyUser(["admin"]), updateUserController);
 
 export default userRoute;
