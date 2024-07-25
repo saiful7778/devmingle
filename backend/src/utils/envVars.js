@@ -9,6 +9,7 @@ const envVars = {
   DB_CONNECT: process.env.DB_CONNECT,
   FORNTEND_URL: process.env.FORNTEND_URL,
   NODE_ENV: process.env.NODE_ENV,
+  PORT: process.env.PORT ?? 5000,
 };
 
 export default function getEnvVar(varName) {

@@ -1,24 +1,14 @@
 import expressApp from "./expressApp.js";
-import { connect } from "mongoose";
-import process from "node:process";
+import connectDB from "./utils/connectDB.js";
 import getEnvVar from "./utils/envVars.js";
 
 (async () => {
-  try {
-    const dbUrl = getEnvVar("DB_CONNECT");
+  await connectDB();
 
-    console.log("connecting...");
-    await connect(dbUrl);
-    console.log("connected DB");
-  } catch (err) {
-    console.log("connection failed");
-    console.log(err);
-  }
+  const app = expressApp();
+  const port = getEnvVar("PORT");
+
+  app.listen(port, () => {
+    console.log("Server is running on port:", port);
+  });
 })();
-
-const port = process.env.PORT ?? 5000;
-const app = expressApp();
-
-app.listen(port, () => {
-  console.log("Server is running on port:", port);
-});
