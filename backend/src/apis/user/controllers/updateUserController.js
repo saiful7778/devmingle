@@ -15,7 +15,7 @@ export default function updateUserController(req, res, next) {
       { $set: { userRole } }
     );
 
-    res.status(200).send({
+    res.status(200).json({
       success: true,
       data,
     });

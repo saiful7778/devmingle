@@ -23,7 +23,7 @@ export default function loginController(req, res, next) {
     );
 
     if (!user) {
-      res.status(400).send({
+      res.status(400).json({
         success: false,
         message: "User doesn't exist",
       });
