@@ -12,7 +12,7 @@ export default function createUserController(req, res, next) {
   serverHelper(async () => {
     const exist = await userModel.findOne({ userEmail });
     if (exist) {
-      res.status(400).send({
+      res.status(400).json({
         success: false,
         message: "User is already exist",
       });
@@ -25,7 +25,7 @@ export default function createUserController(req, res, next) {
       userToken,
     });
 
-    res.status(201).send({
+    res.status(201).json({
       success: true,
       data: {
         userName: result.userName,
