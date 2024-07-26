@@ -24,9 +24,8 @@ postRoute.get("/user_posts/:userId", userPostGetController);
 
 postRoute
   .route("/:postId")
-  .all(verifyToken)
   .get(getPostController)
-  .patch(updatePostController)
-  .delete(verifyUser(["user", "admin"]), deletePostController);
+  .patch(verifyToken, updatePostController)
+  .delete(verifyToken, verifyUser(["user", "admin"]), deletePostController);
 
 export default postRoute;
