@@ -48,7 +48,7 @@ const PostSearch = () => {
         size="md"
         icon={<BiRightArrowAlt size={25} />}
         iconPosition="right"
-        handleOnChange={handleOnChange}
+        handleOnChange={(e) => setTimeout(() => handleOnChange(e), 500)}
       >
         <div className="flex gap-1 items-center mt-1">
           {postTags?.map((tagEle, idx) => (
