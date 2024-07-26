@@ -34,14 +34,14 @@ const sidebarLinks = [
 ];
 
 const postTags = [
-  { _id: "pt1", tagName: "react" },
-  { _id: "pt2", tagName: "node" },
-  { _id: "pt3", tagName: "express" },
-  { _id: "pt4", tagName: "mongodb" },
-  { _id: "pt5", tagName: "frontend" },
-  { _id: "pt6", tagName: "backend" },
-  { _id: "pt7", tagName: "javascript" },
-  { _id: "pt8", tagName: "mern stack" },
+  { tagName: "react" },
+  { tagName: "node" },
+  { tagName: "express" },
+  { tagName: "mongodb" },
+  { tagName: "frontend" },
+  { tagName: "backend" },
+  { tagName: "javascript" },
+  { tagName: "mern stack" },
 ];
 
 export { navLinks, sidebarLinks, postTags };
