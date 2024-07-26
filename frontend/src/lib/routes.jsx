@@ -5,6 +5,7 @@ import Home from "@/pages/public/Home";
 import Register from "@/pages/auth/Register";
 import AuthLayout from "@/layouts/AuthLayout";
 import Login from "@/pages/auth/Login";
+import AllPostPage from "@/pages/public/AllPostPage";
 
 const route = createBrowserRouter([
   {
@@ -31,6 +32,19 @@ const route = createBrowserRouter([
             <Login />
           </AuthLayout>
         ),
+      },
+      {
+        path: "/post",
+        children: [
+          {
+            index: true,
+            element: <AllPostPage />,
+          },
+          // {
+          //   path: ":postID",
+          //   element: <PostItem />,
+          // },
+        ],
       },
     ],
   },
