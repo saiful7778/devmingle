@@ -21,7 +21,7 @@ const Password = ({ errors, register }) => {
         />
         <button
           onClick={() => setPassword((l) => !l)}
-          className="absolute top-1/2 -translate-y-1/2 right-2 z-30 text-gray-500 p-2"
+          className="absolute top-1/2 cursor-pointer -translate-y-1/2 right-2 z-30 text-gray-500 p-2"
           type="button"
         >
           {password ? <IoIosEye size={25} /> : <IoIosEyeOff size={25} />}

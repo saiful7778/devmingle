@@ -4,6 +4,7 @@ import ErrorShow from "@/components/shared/ErrorShow";
 import Home from "@/pages/public/Home";
 import Register from "@/pages/auth/Register";
 import AuthLayout from "@/layouts/AuthLayout";
+import Login from "@/pages/auth/Login";
 
 const route = createBrowserRouter([
   {
@@ -20,6 +21,14 @@ const route = createBrowserRouter([
         element: (
           <AuthLayout>
             <Register />
+          </AuthLayout>
+        ),
+      },
+      {
+        path: "login",
+        element: (
+          <AuthLayout>
+            <Login />
           </AuthLayout>
         ),
       },
