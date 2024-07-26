@@ -10,7 +10,7 @@ const AuthContextProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [userData, setUserData] = useState(null);
   const [token, setToken] = useState(null);
-  const [loader, setLoader] = useState(false);
+  const [loader, setLoader] = useState(true);
   const axios = useAxios();
 
   const register = async (email, pass) => {

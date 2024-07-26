@@ -1,4 +1,4 @@
-import Banner from "@/components/shared/Banner";
+import Banner from "@/components/sections/Banner";
 
 const Home = () => {
   return (
