@@ -9,6 +9,7 @@ import { IoCloseCircleOutline, IoNotifications } from "react-icons/io5";
 import { LuMenuSquare } from "react-icons/lu";
 import SiteLogo from "../SiteLogo";
 import PropTypes from "prop-types";
+import cn from "@/lib/cn";
 
 const Navbar = () => {
   const [mobileMenu, setMobileMenu] = useState(false);
@@ -49,9 +50,10 @@ const Navbar = () => {
         </div>
       </nav>
       <div
-        className={`fixed z-[1000] top-0 ${
+        className={cn(
+          "fixed z-[1000] top-0 min-h-screen p-4 shadow-md bg-white text-center duration-300 md:hidden",
           mobileMenu ? "left-0" : "-left-full"
-        } min-h-screen p-4 shadow-md bg-white text-center duration-300 md:hidden`}
+        )}
       >
         <Button
           className="active:focus:scale-95 duration-100 mx-auto mb-6"
@@ -102,7 +104,7 @@ const UserLogout = () => {
 
   return (
     <Button
-      onClick={() => navigate("/login")}
+      onClick={() => navigate("/register")}
       className="ml-2 p-0 btn"
       size="xs"
       type="primary"
@@ -113,39 +115,38 @@ const UserLogout = () => {
 };
 
 const UserLogged = ({ user, logout }) => {
-  const handleLogout = () => {
-    logout();
-  };
   return (
     <Popover
+      className="!py-2 !px-3"
       showDismissIcon={false}
-      showArrow={false}
       position="bottom-end"
-      className="border border-gray-300 shadow-md whitespace-nowrap py-2 px-3 space-y-2 rounded-lg bg-white"
-      additionalContent={
-        <>
-          <div>{user.displayName}</div>
-          <div>
-            <Link to="/dashboard/profile">Dashboard</Link>
-          </div>
-          <Button
-            onClick={handleLogout}
-            className="btn"
-            size="xs"
-            type="primary"
-          >
-            Logout
-          </Button>
-        </>
-      }
     >
-      <Avatar
-        className="ml-2 cursor-pointer rounded-full bg-gray-200"
-        shape="circle"
-        size="md"
-        bordered={true}
-        img={user?.photoURL ? user?.photoURL : ""}
-      />
+      <Popover.Action>
+        <Avatar
+          shape="circle"
+          size="sm"
+          className="ml-2 cursor-pointer bg-gray-200"
+          bordered
+          img={user?.photoURL}
+        />
+      </Popover.Action>
+      <Popover.Container className="!m-0 flex-col !gap-1">
+        <div className="text-gray-600 text-sm">{user.displayName}</div>
+        <Link
+          to="/dashboard"
+          className="py-1 px-2 rounded-md hover:bg-gray-100"
+        >
+          Dashboard
+        </Link>
+        <Button
+          onClick={logout}
+          className="btn w-full"
+          size="xs"
+          type="primary"
+        >
+          Logout
+        </Button>
+      </Popover.Container>
     </Popover>
   );
 };
