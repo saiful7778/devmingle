@@ -14,6 +14,7 @@ import PrivateProtector from "@/layouts/protector/PrivateProtector";
 import DashboardLayout from "@/layouts/DashboardLayout";
 import Profile from "@/pages/private/Profile";
 import AddPost from "@/pages/private/AddPost";
+import MyPost from "@/pages/private/MyPost";
 
 const route = createBrowserRouter([
   {
@@ -88,6 +89,10 @@ const route = createBrowserRouter([
       {
         path: "add_post",
         element: <AddPost />,
+      },
+      {
+        path: "my_post",
+        element: <MyPost />,
       },
     ],
   },
