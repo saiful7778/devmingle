@@ -4,32 +4,36 @@ const navLinks = [
 ];
 
 const sidebarLinks = [
-  { _id: "sd1", navName: "my profile", path: "/dashboard/profile" },
-  { _id: "sd2", navName: "add post", path: "/dashboard/add_post" },
-  { _id: "sd3", navName: "my post", path: "/dashboard/my_post" },
   {
-    _id: "sd4",
+    navName: "my profile",
+    path: "/dashboard/profile",
+    access: ["user", "admin"],
+  },
+  {
+    navName: "add post",
+    path: "/dashboard/add_post",
+    access: ["user", "admin"],
+  },
+  { navName: "my post", path: "/dashboard/my_post", access: ["user", "admin"] },
+  {
     navName: "users",
     path: "/dashboard/admin/users",
-    adminRoute: true,
+    access: ["admin"],
   },
   {
-    _id: "sd5",
     navName: "reports",
     path: "/dashboard/admin/reports",
-    adminRoute: true,
+    access: ["admin"],
   },
   {
-    _id: "sd6",
     navName: "add announcement",
     path: "/dashboard/admin/add_announcement",
-    adminRoute: true,
+    access: ["admin"],
   },
   {
-    _id: "sd7",
     navName: "all announcement",
     path: "/dashboard/admin/all_announcement",
-    adminRoute: true,
+    access: ["admin"],
   },
 ];
 
