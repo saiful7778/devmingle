@@ -7,7 +7,11 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { RouterProvider } from "react-router-dom";
 import route from "@/lib/routes";
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+  queries: {
+    refetchOnWindowFocus: false,
+  },
+});
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
