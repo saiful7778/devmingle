@@ -7,21 +7,8 @@ export function useAxios() {
 }
 
 export function useAxiosSecure() {
-  const { user, userData, token, logout } = useAuth();
+  const { logout } = useAuth();
   const axios = useAxios();
-
-  useEffect(() => {
-    axios.interceptors.request.use((config) => {
-      config.params = {
-        ...config.params,
-        email: user?.email,
-        userId: userData?._id,
-      };
-
-      config.headers["Authorization"] = token;
-      return config;
-    });
-  }, [axios, token, user?.email, userData?._id]);
 
   useEffect(() => {
     axios.interceptors.response.use(

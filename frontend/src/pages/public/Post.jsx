@@ -21,6 +21,7 @@ import {
 } from "react-share";
 import useAuth from "@/hooks/useAuth";
 import Swal from "sweetalert2";
+import AllComments from "@/components/sections/AllComments";
 
 const Post = () => {
   const { postId } = useParams();
@@ -60,6 +61,7 @@ const Post = () => {
 
   const {
     post: {
+      _id,
       title,
       tags,
       des,
@@ -68,7 +70,7 @@ const Post = () => {
       voteCount: { upVote, downVote },
       commentCount,
     },
-    // comments,
+    comments,
   } = postData;
 
   const renderTags = tags?.map((tagEle, idx) => (
@@ -124,7 +126,11 @@ const Post = () => {
       </div>
       <div className="flex flex-wrap gap-1 mt-1">{renderTags}</div>
       <p>{des}</p>
-      <div className="text-xl font-bold">Comments: {commentCount}</div>
+      <AllComments
+        postId={_id}
+        commentCount={commentCount}
+        comments={comments}
+      />
       {/* <div className="py-3 space-y-3">{renderComments}</div>
       <form className="space-y-3" onSubmit={handleSubmit(submitData)}>
         <Textarea
