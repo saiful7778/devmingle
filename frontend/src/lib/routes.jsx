@@ -7,6 +7,8 @@ import AuthLayout from "@/layouts/AuthLayout";
 import Login from "@/pages/auth/Login";
 import AllPostPage from "@/pages/public/AllPostPage";
 import Post from "@/pages/public/Post";
+import ForgetPassword from "@/pages/auth/ForgetPassword";
+import AuthProtector from "@/layouts/protector/AuthProtector";
 
 const route = createBrowserRouter([
   {
@@ -21,16 +23,28 @@ const route = createBrowserRouter([
       {
         path: "register",
         element: (
-          <AuthLayout>
-            <Register />
-          </AuthLayout>
+          <AuthProtector>
+            <AuthLayout>
+              <Register />
+            </AuthLayout>
+          </AuthProtector>
         ),
       },
       {
         path: "login",
         element: (
+          <AuthProtector>
+            <AuthLayout>
+              <Login />
+            </AuthLayout>
+          </AuthProtector>
+        ),
+      },
+      {
+        path: "forget_password",
+        element: (
           <AuthLayout>
-            <Login />
+            <ForgetPassword />
           </AuthLayout>
         ),
       },

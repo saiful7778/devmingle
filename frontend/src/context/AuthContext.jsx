@@ -40,6 +40,11 @@ const AuthContextProvider = ({ children }) => {
     return signOut(auth);
   };
 
+  const forgetPassword = async (email) => {
+    const { sendPasswordResetEmail } = await import("firebase/auth");
+    return sendPasswordResetEmail(auth, email);
+  };
+
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
       (async () => {
@@ -80,6 +85,7 @@ const AuthContextProvider = ({ children }) => {
         register,
         login,
         logout,
+        forgetPassword,
       }}
     >
       {children}

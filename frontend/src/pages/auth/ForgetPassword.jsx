@@ -1,24 +1,18 @@
-import { useState, useRef } from "react";
-import { Spinner } from "keep-react";
-import { useForm } from "react-hook-form";
-import { useNavigate, useLocation, Link } from "react-router-dom";
-import useAuth from "@/hooks/useAuth";
-import errorStatus from "@/lib/errorStatus";
-import Swal from "sweetalert2";
-import ReCAPTCHA from "react-google-recaptcha";
-import { useAxios } from "@/hooks/useAxios";
 import EmailInput from "@/components/EmailInput";
-import Password from "@/components/Password";
-import SocialAuth from "@/components/SocialAuth";
+import useAuth from "@/hooks/useAuth";
+import { useAxios } from "@/hooks/useAxios";
+import errorStatus from "@/lib/errorStatus";
+import { Spinner } from "keep-react";
+import { useRef, useState } from "react";
+import ReCAPTCHA from "react-google-recaptcha";
+import { useForm } from "react-hook-form";
+import Swal from "sweetalert2";
 
-const Login = () => {
-  const { login } = useAuth();
-  const axios = useAxios();
+const ForgetPassword = () => {
   const [spinner, setSpinner] = useState(false);
-  const navigate = useNavigate();
+  const { forgetPassword } = useAuth();
   const recaptcha = useRef(null);
-  const location = useLocation();
-
+  const axios = useAxios();
   const {
     register,
     handleSubmit,
@@ -27,11 +21,9 @@ const Login = () => {
   } = useForm();
 
   const submitData = async (e) => {
-    setSpinner(true);
     try {
+      setSpinner(true);
       const email = e.email;
-      const pass = e.password;
-
       if (recaptcha.current) {
         const captchaValue = recaptcha.current.getValue();
         if (!captchaValue) {
@@ -53,13 +45,7 @@ const Login = () => {
           throw new Error("Invalid reCaptcha!");
         }
 
-        const { user } = await login(email, pass);
-        Swal.fire({
-          icon: "success",
-          title: user.displayName,
-          text: "Account successfully logged in!",
-        });
-        navigate(location.state ? location.state.from.pathname : "/");
+        await forgetPassword(email);
       }
     } catch (err) {
       errorStatus(err);
@@ -72,34 +58,21 @@ const Login = () => {
   return (
     <>
       <h3 className="text-blue-600 text-5xl font-bold text-center mb-6">
-        Login
+        Forget password
       </h3>
       <form onSubmit={handleSubmit(submitData)} className="space-y-3">
         <EmailInput register={register} errors={errors} />
-        <Password register={register} errors={errors} />
-        <Link
-          className="text-xs font-semibold text-gray-500 hover:underline"
-          to="/forget_password"
-        >
-          Forget password?
-        </Link>
         <ReCAPTCHA ref={recaptcha} sitekey={import.meta.env.VITE_SITE_KEY} />
         <button
           className="w-full bg-blue-600 text-white rounded-md p-2 font-medium active:focus:scale-95 duration-150"
           type="submit"
+          disabled={spinner}
         >
-          {spinner ? <Spinner color="info" size="sm" /> : "LOGIN"}
+          {spinner ? <Spinner color="info" size="sm" /> : "Forget password"}
         </button>
       </form>
-      <p className="text-center text-sm mt-4">
-        Don{`'`}t have any account?{" "}
-        <Link className="text-blue-600 italic underline" to="/register">
-          register
-        </Link>
-      </p>
-      <SocialAuth />
     </>
   );
 };
 
-export default Login;
+export default ForgetPassword;
