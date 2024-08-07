@@ -189,7 +189,7 @@ const TableRow = ({ inputData }) => {
               icon={<GoCommentDiscussion size={25} />}
               onClose={() => setShowModal((l) => !l)}
             >
-              <Modal.Header></Modal.Header>
+              <Modal.Header>Comment</Modal.Header>
               <Modal.Body>
                 <p className="text-gray-500">{details}</p>
               </Modal.Body>

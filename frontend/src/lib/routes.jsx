@@ -1,4 +1,4 @@
-import { createBrowserRouter } from "react-router-dom";
+import { createBrowserRouter, Outlet } from "react-router-dom";
 import MainLayout from "@/layouts/MainLayout";
 import ErrorShow from "@/components/shared/ErrorShow";
 import Home from "@/pages/public/Home";
@@ -16,6 +16,8 @@ import Profile from "@/pages/private/Profile";
 import AddPost from "@/pages/private/AddPost";
 import MyPost from "@/pages/private/MyPost";
 import Comments from "@/pages/private/Comments";
+import AdminProtector from "@/layouts/protector/AdminProtector";
+import AllUsers from "@/pages/private/admin/AllUsers";
 
 const route = createBrowserRouter([
   {
@@ -98,6 +100,20 @@ const route = createBrowserRouter([
       {
         path: "comments/:postId",
         element: <Comments />,
+      },
+      {
+        path: "admin",
+        element: (
+          <AdminProtector>
+            <Outlet />
+          </AdminProtector>
+        ),
+        children: [
+          {
+            path: "users",
+            element: <AllUsers />,
+          },
+        ],
       },
     ],
   },
