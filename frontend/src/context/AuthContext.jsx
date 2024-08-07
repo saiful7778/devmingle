@@ -54,8 +54,8 @@ const AuthContextProvider = ({ children }) => {
             const { data } = await axios.post("/api/auth/login", {
               userEmail: currentUser?.email,
             });
-            setUserData(data.userData);
-            setToken(data.token);
+            setUserData(data.user);
+            setToken(`Bearer ${data.token}`);
           } else {
             setUser(null);
             setUserData(null);
