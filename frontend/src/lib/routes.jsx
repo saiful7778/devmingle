@@ -9,6 +9,7 @@ import AllPostPage from "@/pages/public/AllPostPage";
 import Post from "@/pages/public/Post";
 import ForgetPassword from "@/pages/auth/ForgetPassword";
 import AuthProtector from "@/layouts/protector/AuthProtector";
+import AllAnnouncement from "@/pages/public/AllAnnouncement";
 
 const route = createBrowserRouter([
   {
@@ -60,6 +61,10 @@ const route = createBrowserRouter([
             element: <Post />,
           },
         ],
+      },
+      {
+        path: "/announcement",
+        element: <AllAnnouncement />,
       },
     ],
   },
