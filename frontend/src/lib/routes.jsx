@@ -13,6 +13,7 @@ import AllAnnouncement from "@/pages/public/AllAnnouncement";
 import PrivateProtector from "@/layouts/protector/PrivateProtector";
 import DashboardLayout from "@/layouts/DashboardLayout";
 import Profile from "@/pages/private/Profile";
+import AddPost from "@/pages/private/AddPost";
 
 const route = createBrowserRouter([
   {
@@ -83,6 +84,10 @@ const route = createBrowserRouter([
       {
         path: "profile",
         element: <Profile />,
+      },
+      {
+        path: "add_post",
+        element: <AddPost />,
       },
     ],
   },

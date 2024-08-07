@@ -89,6 +89,11 @@ const CommentForm = ({ postId }) => {
         queryClient.invalidateQueries({
           queryKey: ["post", postId],
         });
+
+        Swal.fire({
+          icon: "success",
+          title: "Comment is added!",
+        });
       } else {
         throw new Error("Error from reCaptcha");
       }
