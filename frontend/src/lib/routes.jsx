@@ -18,6 +18,7 @@ import MyPost from "@/pages/private/MyPost";
 import Comments from "@/pages/private/Comments";
 import AdminProtector from "@/layouts/protector/AdminProtector";
 import AllUsers from "@/pages/private/admin/AllUsers";
+import Reports from "@/pages/private/admin/Reports";
 
 const route = createBrowserRouter([
   {
@@ -112,6 +113,10 @@ const route = createBrowserRouter([
           {
             path: "users",
             element: <AllUsers />,
+          },
+          {
+            path: "reports",
+            element: <Reports />,
           },
         ],
       },
