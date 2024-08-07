@@ -19,6 +19,7 @@ import Comments from "@/pages/private/Comments";
 import AdminProtector from "@/layouts/protector/AdminProtector";
 import AllUsers from "@/pages/private/admin/AllUsers";
 import Reports from "@/pages/private/admin/Reports";
+import AddAnnouncement from "@/pages/private/admin/AddAnnouncement";
 
 const route = createBrowserRouter([
   {
@@ -117,6 +118,10 @@ const route = createBrowserRouter([
           {
             path: "reports",
             element: <Reports />,
+          },
+          {
+            path: "add_announcement",
+            element: <AddAnnouncement />,
           },
         ],
       },
