@@ -12,8 +12,7 @@ const announcementRoute = Router();
 
 announcementRoute
   .route("/")
-  .all(verifyToken)
-  .post(verifyUser(["admin"]), createAnnouncementController)
+  .post(verifyToken, verifyUser(["admin"]), createAnnouncementController)
   .get(getAllAnnouncementController);
 
 announcementRoute.get("/count", countAnnouncementController);
