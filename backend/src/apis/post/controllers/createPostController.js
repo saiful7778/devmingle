@@ -23,7 +23,7 @@ export default function createPostController(req, res, next) {
     });
 
     if (userPostCountUpdate.modifiedCount === 0) {
-      res.status(400).json({
+      res.status(200).json({
         success: false,
         message: "You have limited post, please update your plan",
       });
