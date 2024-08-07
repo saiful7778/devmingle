@@ -15,6 +15,7 @@ import DashboardLayout from "@/layouts/DashboardLayout";
 import Profile from "@/pages/private/Profile";
 import AddPost from "@/pages/private/AddPost";
 import MyPost from "@/pages/private/MyPost";
+import Comments from "@/pages/private/Comments";
 
 const route = createBrowserRouter([
   {
@@ -93,6 +94,10 @@ const route = createBrowserRouter([
       {
         path: "my_post",
         element: <MyPost />,
+      },
+      {
+        path: "comments/:postId",
+        element: <Comments />,
       },
     ],
   },
