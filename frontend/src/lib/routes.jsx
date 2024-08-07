@@ -12,6 +12,7 @@ import AuthProtector from "@/layouts/protector/AuthProtector";
 import AllAnnouncement from "@/pages/public/AllAnnouncement";
 import PrivateProtector from "@/layouts/protector/PrivateProtector";
 import DashboardLayout from "@/layouts/DashboardLayout";
+import Profile from "@/pages/private/Profile";
 
 const route = createBrowserRouter([
   {
@@ -78,12 +79,12 @@ const route = createBrowserRouter([
         <DashboardLayout />
       </PrivateProtector>
     ),
-    // children: [
-    //   {
-    //     path: "profile",
-    //     element: <UserProfile />,
-    //   },
-    // ]
+    children: [
+      {
+        path: "profile",
+        element: <Profile />,
+      },
+    ],
   },
 ]);
 
