@@ -10,6 +10,8 @@ import Post from "@/pages/public/Post";
 import ForgetPassword from "@/pages/auth/ForgetPassword";
 import AuthProtector from "@/layouts/protector/AuthProtector";
 import AllAnnouncement from "@/pages/public/AllAnnouncement";
+import PrivateProtector from "@/layouts/protector/PrivateProtector";
+import DashboardLayout from "@/layouts/DashboardLayout";
 
 const route = createBrowserRouter([
   {
@@ -67,6 +69,21 @@ const route = createBrowserRouter([
         element: <AllAnnouncement />,
       },
     ],
+  },
+  {
+    path: "/dashboard",
+    errorElement: <ErrorShow />,
+    element: (
+      <PrivateProtector>
+        <DashboardLayout />
+      </PrivateProtector>
+    ),
+    // children: [
+    //   {
+    //     path: "profile",
+    //     element: <UserProfile />,
+    //   },
+    // ]
   },
 ]);
 
