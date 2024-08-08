@@ -6,7 +6,8 @@
   "type": "module",
   "scripts": {
     "start": "node ./src/index.js",
-    "dev": "nodemon"
+    "dev": "nodemon",
+    "deploy": "vercel --prod"
   },
   "keywords": [],
   "author": "Saiful Islam <saiful.islam.rafi.88@gmail.com>",
