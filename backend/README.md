@@ -2,6 +2,8 @@
 
 **Live link :** [devmingle-forum.web.app](https://devmingle-forum.web.app)
 
+![Screenshot from 2024-08-08 16-05-07](https://github.com/user-attachments/assets/1b8ad311-c6fe-4e78-9ae1-5d65d95eff49)
+
 ### Table of Contents
 
 1. [Introduction](#introduction)
