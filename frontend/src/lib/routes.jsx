@@ -21,6 +21,7 @@ import AllUsers from "@/pages/private/admin/AllUsers";
 import Reports from "@/pages/private/admin/Reports";
 import AddAnnouncement from "@/pages/private/admin/AddAnnouncement";
 import ManageAnnouncement from "@/pages/private/admin/ManageAnnouncement";
+import MemberShip from "@/pages/private/MemberShip";
 
 const route = createBrowserRouter([
   {
@@ -76,6 +77,14 @@ const route = createBrowserRouter([
       {
         path: "/announcement",
         element: <AllAnnouncement />,
+      },
+      {
+        path: "/membership",
+        element: (
+          <PrivateProtector>
+            <MemberShip />
+          </PrivateProtector>
+        ),
       },
     ],
   },
