@@ -131,34 +131,13 @@ const Post = () => {
         commentCount={commentCount}
         comments={comments}
       />
-      {/* <div className="py-3 space-y-3">{renderComments}</div>
-      <form className="space-y-3" onSubmit={handleSubmit(submitData)}>
-        <Textarea
-          placeholder="Leave a comment..."
-          withBg={true}
-          color="info"
-          border={true}
-          rows={4}
-          {...register("comment", { required: true })}
-        />
-        <CheckError error={errors} inputName="comment" fieldName="required">
-          Comment is required
-        </CheckError>
-        <ReCAPTCHA ref={recaptcha} sitekey={import.meta.env.VITE_SITE_KEY} />
-        <button
-          className="w-full bg-blue-600 text-white rounded-md p-2 font-medium active:focus:scale-95 duration-150"
-          type="submit"
-        >
-          Add comment
-        </button>
-      </form> */}
     </div>
   );
 };
 
 const PostVote = ({ postId, upVote, downVote, refetch }) => {
   const axios = useAxios();
-  const { user } = useAuth();
+  const { user, userData, token } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -178,11 +157,14 @@ const PostVote = ({ postId, upVote, downVote, refetch }) => {
       }
       const body =
         vote === "up"
-          ? { upVote: parseInt(upVote) + 1, downVote }
-          : { downVote: parseInt(downVote) + 1, upVote };
+          ? { upVote: parseInt(upVote) + 1 }
+          : { downVote: parseInt(downVote) + 1 };
 
       const { data } = await axios.patch(`/api/posts/${postId}`, body, {
-        params: { email: user.email },
+        params: { userEmail: user?.email, userId: userData?._id },
+        headers: {
+          Authorization: token,
+        },
       });
 
       if (!data?.success) {
