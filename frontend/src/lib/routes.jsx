@@ -20,6 +20,7 @@ import AdminProtector from "@/layouts/protector/AdminProtector";
 import AllUsers from "@/pages/private/admin/AllUsers";
 import Reports from "@/pages/private/admin/Reports";
 import AddAnnouncement from "@/pages/private/admin/AddAnnouncement";
+import ManageAnnouncement from "@/pages/private/admin/ManageAnnouncement";
 
 const route = createBrowserRouter([
   {
@@ -122,6 +123,10 @@ const route = createBrowserRouter([
           {
             path: "add_announcement",
             element: <AddAnnouncement />,
+          },
+          {
+            path: "all_announcement",
+            element: <ManageAnnouncement />,
           },
         ],
       },
